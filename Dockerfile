@@ -1,10 +1,10 @@
-FROM golang:alpine
+FROM golang:1.14
 
-WORKDIR /go/src
+COPY ./go/ ./
 
-COPY ./go /go/src
+RUN go test -v -run TestGreetings
 
-RUN cd /go/src && go build -o main
+RUN go build -o main
 
 EXPOSE 8000
 

@@ -1,9 +1,9 @@
 steps:
 
-  - id: "Rodando docker"
+  - id: "Rodando docker & Tests"
     name: 'docker/compose'
     args: ['-f','docker-compose.yaml','up','-d']
 
   - id: "Rodando test"
     name: 'gcr.io/cloud-builders/docker'
-    args: ['exec','-t','app','/go/src/go','test','-v', '-run', 'TestGreetings']
+    args: ['exec','-t','app','go','test','-v', '-run', 'TestGreetings']
